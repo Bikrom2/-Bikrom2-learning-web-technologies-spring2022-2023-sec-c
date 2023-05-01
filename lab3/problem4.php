@@ -1,8 +1,8 @@
 <?php
 
-   $number1=19;
-   $number2=20;
-   $number3=75;
+   $number1=24;
+   $number2=25;
+   $number3=80;
 
    if($number1>$number2 && $number1>$number3)
     {
