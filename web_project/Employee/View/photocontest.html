@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PHOTO CONTEST</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        img {
+            width: 400px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+
+
+        <h2>EVENT PHOTO</h2><br>
+        <img src="../cox.jpeg" alt=""><br><br><br>
+        COMMENT:<textarea id="comment" cols="30" rows="5"></textarea><br><br>
+
+        <h3>Who taking this photo?</h3>
+
+        <input type="button" name="submit" value="About" onclick=" ajax()">
+        <input type="button" name="submit" value="click" onclick="alert('another test')">
+
+        <br>
+
+
+        <p id="name">name</p>
+        <p id="age">age</p>
+        <p id="birth">birthpalce</p>
+        <p id="nat">nationlity</p>
+
+
+
+
+
+
+        <script>
+
+
+            function ajax() {
+
+                //let username = document.getElementById('username').value;
+                let username = "bikrom"
+                let age = "20";
+                let birth = "Rangpur";
+                let nationlity = "Bangladesh"
+                let user = {
+                    'username': username,
+                    'age': age,
+                    'birth': birth,
+                    'nationlity': nat,
+                };
+                let data = JSON.stringify(user);
+
+                let xhttp = new XMLHttpRequest();
+                xhttp.open('post', 'json.php', true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send('user=' + data);
+                xhttp.onreadystatechange = function () {
+
+                    if (this.readyState == 4 && this.status == 200) {
+                        //alert(this.responseText);
+
+                        let user = JSON.parse(this.responseText);
+
+
+                        document.getElementById('name').innerHTML = user.username;
+                        document.getElementById('age').innerHTML = user.age;
+                        document.getElementById('birth').innerHTML = user.birth;
+                        document.getElementById('nat').innerHTML = user.nationlity;
+                    }
+                }
+            }
+
+        </script>
+        <a href="home.php"><input type="button" name="" value="HOME" /></a>
+    </center>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <title>Event Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <form method="POST" action="" enctype="">
+        <center>
+            <h2>COX'S BAZER EVENT</h2><br>
+            <h4>If you want to go there then click on this photo</h4>
+            <a href="eventregistration.html"><img src="../cox.jpeg" height="160" width="250" /> </a>
+            <br>
+
+
+            <input type="button" name="submit" value="About this event" onclick=" ajax()">
+
+
+            <br>
+
+
+            <p id="name"></p>
+            <p id="age"></p>
+            <p id="birth"></p>
+            <p id="nat"></p>
+
+
+
+
+
+
+            <script>
+
+
+                function ajax() {
+
+                    //let username = document.getElementById('username').value;
+                    let username = "bikrom"
+                    let age = "20";
+                    let birth = "Rangpur";
+                    let nationlity = "Bangladesh"
+                    let user = {
+                        'username': username,
+                        'age': age,
+                        'birth': birth,
+                        'nationlity': nat,
+                    };
+                    let data = JSON.stringify(user);
+
+                    let xhttp = new XMLHttpRequest();
+                    xhttp.open('post', 'json.php', true);
+                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhttp.send('event=' + data);
+                    xhttp.onreadystatechange = function () {
+
+                        if (this.readyState == 4 && this.status == 200) {
+                            //alert(this.responseText);
+
+                            let user = JSON.parse(this.responseText);
+
+
+                            document.getElementById('name').innerHTML = user.username;
+                            document.getElementById('age').innerHTML = user.age;
+                            document.getElementById('birth').innerHTML = user.birth;
+                            document.getElementById('nat').innerHTML = user.nationlity;
+                        }
+                    }
+                }
+
+            </script>
+
+            <br><br>
+            <a href="home.php"><input type="button" name="" value="HOME" /></a>
+        </center>
+        <br>
+
+
+
+    </form>
+</body>
+
+</html>

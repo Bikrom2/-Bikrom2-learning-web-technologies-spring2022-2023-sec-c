@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>visa processing</title>
+    <link rel="stylesheet" href="style.css">
+
+
+
+
+</head>
+
+<body>
+
+
+    <body>
+        <form method="POST" action="../Controller/visaprocessingCheck.php" enctype="">
+            <pre>
+
+            NAME    : <input type="text" name="name" value="" onkeyup="N()" />
+            <span id="nameError"></span><br>
+
+            EMAIL   : <input type="email" name="email" value="" onkeyup="E()" />
+            <span id="emailError"></span><br>
+
+            PHONE   : <input type="number" name="phone" value="" onkeyup="P()" />
+            <span id="phoneError"></span><br>
+
+            NID     : <input type="number" name="nid" value="" onkeyup="Ni()" />
+            <span id="nidError"></span><br>
+
+            PASSPORT: <input type="number" name="passport" value="" onkeyup="PA()" />
+            <span id="passportError"></span><br>
+        </pre>
+            <input type="submit" name="submit" value="Submit" />
+
+        </form>
+        <script>
+
+            function validateName() {
+                let nameInput = document.getElementsByName("name")[0];
+                let nameError = document.getElementById("nameError");
+
+                if (nameInput.value.length < 3) {
+                    nameError.innerHTML = "Name must be at least 3 characters long";
+                    nameInput.style.border = "1px solid red";
+                } else {
+                    nameError.innerHTML = "";
+                    nameInput.style.border = "";
+                }
+            }
+
+            function validateEmail() {
+                let emailInput = document.getElementsByName("email")[0];
+                let emailError = document.getElementById("emailError");
+
+                if (!emailInput.checkValidity()) {
+                    emailError.innerHTML = "Please enter a valid email address";
+                    emailInput.style.border = "1px solid red";
+                } else {
+                    emailError.innerHTML = "";
+                    emailInput.style.border = "";
+                }
+            }
+
+            function validatePhone() {
+                let phoneInput = document.getElementsByName("number")[0];
+                let phoneError = document.getElementById("phoneError");
+
+                if (phoneInput.value.length < 10 || phoneInput.value.length > 11) {
+                    phoneError.innerHTML = "Please enter a valid phone number";
+                    phoneInput.style.border = "1px solid red";
+                } else {
+                    phoneError.innerHTML = "";
+                    phoneInput.style.border = "";
+                }
+            }
+
+            function validateNID() {
+                let nidInput = document.getElementsByName("number")[1];
+                let nidError = document.getElementById("nidError");
+
+                if (nidInput.value.length != 13) {
+                    nidError.innerHTML = "Please enter a valid NID number";
+                    nidInput.style.border = "1px solid red";
+                } else {
+                    nidError.innerHTML = "";
+                    nidInput.style.border = "";
+                }
+            }
+
+            function validatePassport() {
+                let passportInput = document.getElementsByName("number")[2];
+                let passportError = document.getElementById("passportError");
+
+                if (passportInput.value.length < 6 || passportInput.value.length > 9) {
+                    passportError.innerHTML = "Please enter a valid passport number";
+                    passportInput.style.border = "1px solid red";
+                } else {
+                    passportError.innerHTML = "";
+                    passportInput.style.border = "";
+                }
+            }
+
+            function N() {
+                validateName();
+            }
+
+            function E() {
+                validateEmail();
+            }
+
+            function P() {
+                validatePhone();
+            }
+
+            function Ni() {
+                validateNID();
+            }
+
+            function PA() {
+                validatePassport();
+            }
+
+
+
+        </script>
+
+    </body>
+
+
+
+
+</body>
+
+</html>
